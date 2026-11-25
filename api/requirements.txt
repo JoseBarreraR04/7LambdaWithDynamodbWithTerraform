@@ -1,0 +1,2 @@
+# Dependencias que Chalice empaqueta con la lambda de la API.
+# boto3 ya viene incluido en el runtime de AWS Lambda, así que no hace falta.

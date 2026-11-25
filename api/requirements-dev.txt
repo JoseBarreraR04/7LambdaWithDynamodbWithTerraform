@@ -1,0 +1,5 @@
+# Herramientas para desarrollar, probar y desplegar la API (no se empaquetan).
+chalice
+boto3
+moto[dynamodb]
+pytest
