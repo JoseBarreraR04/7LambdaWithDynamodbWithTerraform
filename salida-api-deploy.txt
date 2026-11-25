@@ -1,0 +1,8 @@
+bash api/deploy.sh deploy
+==> Usando rol arn:aws:iam::707905938407:role/LabRole
+Creating deployment package.
+Creating lambda function: iot-api-dev
+Creating Rest API
+Resources deployed:
+  - Lambda ARN: arn:aws:lambda:us-east-1:707905938407:function:iot-api-dev
+  - Rest API URL: https://jaruijmja9.execute-api.us-east-1.amazonaws.com/api/
