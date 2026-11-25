@@ -57,21 +57,22 @@ Un sensor sin lecturas devuelve `200` con `"cantidad": 0`.
 
 ## Uso
 
-Desde la raíz del proyecto (en Windows, con el contenedor; ver el README principal):
+Paso a paso completo (Windows, Learner Lab): ver [../GUIA-PASO-A-PASO.md](../GUIA-PASO-A-PASO.md).
 
-```powershell
-docker compose run --rm tools make api-test     # pruebas locales (sin AWS)
-docker compose run --rm tools make api-deploy   # chalice deploy (requiere la infra y las lambdas desplegadas)
-docker compose run --rm tools make api-smoke    # POST + GET contra la API desplegada
-docker compose run --rm tools make api-delete   # chalice delete
-```
-
-Ejemplos con `curl` (Linux/Mac, o dentro de `docker compose run --rm tools bash`):
+Dentro del contenedor `iot_dev_environment`, desde `/app`:
 
 ```bash
-URL=$(bash api/deploy.sh url)
-curl -X POST ${URL}eventos -H 'Content-Type: application/json' \
-  -d '{"device_id":"sensor-01","temperature":23.5,"humidity":60}'
+make api-test     # pruebas locales (sin AWS)
+make api-deploy   # chalice deploy (requiere la infra y las lambdas desplegadas)
+make api-smoke    # POST + GET contra la API desplegada
+make api-delete   # chalice delete
+```
+
+Ejemplos con `curl`:
+
+```bash
+URL=$(make -s api-url)
+curl -X POST ${URL}eventos -H 'Content-Type: application/json'   -d '{"device_id":"sensor-01","temperature":23.5,"humidity":60}'
 curl ${URL}sensores/sensor-01
 curl "${URL}sensores/sensor-01?limit=5"
 ```

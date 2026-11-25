@@ -57,6 +57,20 @@ def error(status, mensaje):
     return Response(status_code=status, body={"error": mensaje})
 
 
+@app.route("/", methods=["GET"])
+def index():
+    """Raíz: confirma que la API está viva y lista los endpoints.
+    (Sin esta ruta, API Gateway responde "Missing Authentication Token".)"""
+    return {
+        "api": "iot-api",
+        "estado": "ok",
+        "endpoints": {
+            "POST /eventos": "Publica la lectura de un sensor (JSON con device_id o sensor_id + mediciones)",
+            "GET /sensores/{sensor_id}": "Lecturas del sensor, más recientes primero (?limit=N opcional)",
+        },
+    }
+
+
 @app.route("/eventos", methods=["POST"], content_types=["application/json"])
 def crear_evento():
     try:

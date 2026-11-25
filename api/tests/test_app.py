@@ -160,3 +160,10 @@ def test_get_sensor_sin_lecturas(tabla_con_datos):
         r = client.http.get("/sensores/no-existe")
     assert r.status_code == 200
     assert r.json_body == {"sensor_id": "no-existe", "cantidad": 0, "lecturas": []}
+
+
+def test_raiz_lista_endpoints():
+    with Client(api.app) as client:
+        r = client.http.get("/")
+    assert r.status_code == 200
+    assert r.json_body["estado"] == "ok" and "POST /eventos" in r.json_body["endpoints"]

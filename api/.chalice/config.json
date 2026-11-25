@@ -6,7 +6,7 @@
       "api_gateway_stage": "api",
       "manage_iam_role": false,
       "autogen_policy": false,
-      "iam_role_arn": "arn:aws:iam::ACCOUNT_ID:role/LabRole",
+      "iam_role_arn": "arn:aws:iam::707905938407:role/LabRole",
       "lambda_timeout": 30,
       "environment_variables": {
         "TABLE_NAME": "iot_lecturas",

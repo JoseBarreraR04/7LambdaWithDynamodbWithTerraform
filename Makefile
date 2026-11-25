@@ -1,7 +1,8 @@
 # Makefile del ejemplo IoT: S3 -> Lambda -> DynamoDB (+ API Chalice)
 #
 # En Windows se usa dentro del contenedor de herramientas:
-#   docker compose run --rm tools make <comando>
+#   docker exec -it iot_dev_environment bash   (y ahí: make <comando>)
+# Ver GUIA-PASO-A-PASO.md
 VENV   := venv
 REQS   := lambdas/requirements.txt
 INFRA  := infraestructura
